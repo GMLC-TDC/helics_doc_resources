@@ -1,0 +1,166 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "values": [
+      {
+        "Sent": "Int",
+        "Received": [
+          "Int",
+          "Double",
+          "Complex",
+          "Vector",
+          "String",
+          "Complex vector",
+          "JSON",
+          "NamedPoint",
+          "Time"
+        ]
+      },
+      {
+        "Sent": "Double",
+        "Received": [
+          "Double",
+          "Complex",
+          "Vector",
+          "String",
+          "Complex vector",
+          "JSON",
+          "NamedPoint"
+        ]
+      },
+      {
+        "Sent": "Complex",
+        "Received": [
+          "Complex",
+          "Vector",
+          "String",
+          "Complex vector",
+          "JSON",
+          "NamedPoint"
+        ]
+      },
+      {
+        "Sent": "Vector",
+        "Received": ["Vector", "String", "Complex vector", "JSON", "NamedPoint"]
+      },
+      {"Sent": "String", "Received": ["String", "JSON", "NamedPoint"]},
+      {
+        "Sent": "Complex vector",
+        "Received": ["Vector", "String", "Complex vector", "JSON", "NamedPoint"]
+      },
+      {
+        "Sent": "Boolean",
+        "Received": [
+          "Int",
+          "Double",
+          "Complex",
+          "Vector",
+          "String",
+          "Complex vector",
+          "Boolean",
+          "JSON",
+          "NamedPoint",
+          "Char",
+          "Time"
+        ]
+      },
+      {"Sent": "JSON", "Received": ["String", "JSON", "NamedPoint"]},
+      {"Sent": "NamedPoint", "Received": ["String", "JSON", "NamedPoint"]},
+      {
+        "Sent": "Char",
+        "Received": [
+          "Int",
+          "Double",
+          "Complex",
+          "Vector",
+          "String",
+          "Complex vector",
+          "JSON",
+          "NamedPoint",
+          "Char",
+          "Time"
+        ]
+      },
+      {
+        "Sent": "Time",
+        "Received": [
+          "Int",
+          "Double",
+          "Complex",
+          "Vector",
+          "String",
+          "Complex vector",
+          "JSON",
+          "NamedPoint",
+          "Time"
+        ]
+      }
+    ]
+  },
+  "width": 650,
+  "height": 400,
+  "config": {
+    "axis": {
+      "grid": true,
+      "tickBand": "extent",
+      "labelFontSize": 12,
+      "titleFontSize": 20
+    }
+  },
+  "transform": [
+    {"flatten": ["Received"]},
+    {"calculate": "'green'", "as": "Lossless"}
+  ],
+  "mark": "rect",
+  "encoding": {
+    "y": {
+      "field": "Sent",
+      "type": "nominal",
+      "sort": [
+        "Int",
+        "Double",
+        "Complex",
+        "Vector",
+        "String",
+        "Complex vector",
+        "Boolean",
+        "JSON",
+        "NamedPoint",
+        "Char",
+        "Time"
+      ]
+    },
+    "x": {
+      "field": "Received",
+      "type": "nominal",
+      "axis": {"orient": "top", "labelAngle": 290},
+      "sort": [
+        "Int",
+        "Double",
+        "Complex",
+        "Vector",
+        "String",
+        "Complex vector",
+        "Boolean",
+        "JSON",
+        "NamedPoint",
+        "Char",
+        "Time"
+      ]
+    },
+    "color": {
+      "field": "Lossless",
+      "type": "ordinal",
+      "scale": {"range": {"field": "Lossless"}},
+      "legend": {
+        "title": "Lossless",
+        "orient": "bottom",
+        "titleOrient": "right",
+        "titleFontSize": 14,
+        "titleFontWeight": "normal",
+        "titleFontStyle": "italic",
+        "labelFontSize": 0
+      }
+    }
+  }
+}
